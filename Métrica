@@ -1,0 +1,60 @@
+---------------------------------------------------------------------------------------------
+
+public class ExceptionCalculadora extends Exception {
+
+    public ExceptionCalculadora(String message) {
+        super(message);
+    }
+
+    public ExceptionCalculadora erroAoDividirPorZero() {
+        return new ExceptionCalculadora("Não posso divir por zero");
+    }
+
+}
+
+    public ExceptionCalculadora erroAoInserirLetra() {
+    return new ExceptionCalculadora("Não posso inserir uma letra");
+
+    }
+
+---------------------------------------------------------------------------------------------
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+public class Calculadora {
+
+    private Logger logger;
+
+    public Calculadora() {
+    }
+
+    public Double add(Double par1, Double par2) {
+        if (Double.isNaN(par2)){
+        throw new ExceptionCalculadora("Não posso inserir uma letra");
+    }
+
+        return par1;
+    }
+
+    public Double sub(Double par1, Double par2) {
+        if (Double.isNaN(par2)){
+            throw new ExceptionCalculadora("Não posso inserir uma letra");
+        }
+        return par1 - par2;
+    }
+
+    public Double mul(Double par1, Double par2) {
+        if (Double.isNaN(par2)){
+            throw new ExceptionCalculadora("Não posso inserir uma letra");
+        }
+        return par1 * par2;
+    }
+
+    public Double div(Double par1, Double par2) throws ExceptionCalculadora {
+        if (par2 == 0) {
+            throw new ExceptionCalculadora("Não posso divir por zero");
+        }
+        return par1 / par2;
+    }
+
+}
